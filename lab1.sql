@@ -1,29 +1,29 @@
-create database lab1;
+CREATE DATABASE lab1;
 
-create table if not exists users (
-    id serial,
-    firstname varchar(50),
-    lastname varchar (50)
+CREATE TABLE IF NOT EXISTS users (
+    id SERIAL,
+    firstname VARCHAR(50),
+    lastname VARCHAR(50)
 );
 
-alter table users
-add isadmin int;
+ALTER TABLE users
+ADD isadmin INT;
 
-alter table users
-alter column isadmin type boolean;
+ALTER TABLE users
+ALTER COLUMN isadmin TYPE BOOLEAN;
 
-alter table users
-alter column isadmin set default 0;
+ALTER TABLE users
+ALTER COLUMN isadmin SET DEFAULT 0;
 
 ALTER TABLE users
 ADD PRIMARY KEY (id);
 
-create table if not exists tasks (
-    id serial,
-    name varchar(50),
-    user_id int
+CREATE TABLE IF NOT EXISTS tasks (
+    id SERIAL,
+    name VARCHAR(50),
+    user_id INT
 );
 
-drop table tasks;
+DROP TABLE tasks;
 
-drop database lab1;
+DROP DATABASE lab1;
