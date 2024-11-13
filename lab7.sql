@@ -5,7 +5,7 @@ CREATE INDEX countries_name_index ON countries(name);
 CREATE INDEX employees_name_index ON employees(name, surname);
 
 --3
-CREATE INDEX employees_salary_unique_index ON employees(salary);
+CREATE INDEX employees_salary_index ON employees(salary);
 
 --4
 CREATE INDEX employees_name_index ON employees(substring(name FROM 1 for 4));
