@@ -141,8 +141,15 @@ create or replace function complex(in a int, in b int, in c varchar, out res var
         num_res int;
         string_res varchar;
     begin
+       <<first_subblock>>
+        begin
         num_res := (a * b) / 100;
+        end;
+
+        <<second_subblock>>
+        begin
         string_res := upper(c);
+        end;
 
         res := concat('First result: ', num_res, '| Second result: ', string_res);
     end;
