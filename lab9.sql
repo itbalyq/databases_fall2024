@@ -114,13 +114,25 @@ $$
     language plpgsql;
 select calculate_bonus(10);
 
-create or replace function update_salary(in emp_id int) return void as
-$$
-begin
+create or replace function update_salary(in emp_id int) returns void as
+    $$
+    declare
+    bonus numeric;
+    new_salary numeric;
+    base_salary numeric;
+    begin
+        select salary into base_salary from employees where id = emp_id;
 
-end;
-$$
+        bonus := calculate_bonus(base_salary);
+        new_salary := base_salary + bonus;
+
+        update employees set salary = new_salary where id = emp_id;
+    end;
+    $$
 language plpgsql;
+
+select update_salary(2);
+select * from employees where id = 2;
 
 --7
 create or replace function complex(in a int, in b int, in c varchar, out res varchar) returns varchar as
